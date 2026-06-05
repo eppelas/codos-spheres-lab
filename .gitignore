@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+.agent-hub/tmp/
+.preview/
+*.log
+verification-result.json
+_ Codos Spheres Preview.app/
+preview-icon-source.png
