@@ -35,8 +35,11 @@ jobs:
         env:
           VITE_PAGES_BASE: /codos-spheres-lab/
 
-      - name: Add SPA fallback
-        run: cp dist/index.html dist/404.html
+      - name: Add SPA fallbacks
+        run: |
+          cp dist/index.html dist/404.html
+          mkdir -p dist/firefly
+          cp dist/index.html dist/firefly/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
