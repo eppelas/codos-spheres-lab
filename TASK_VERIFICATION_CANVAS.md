@@ -32,11 +32,11 @@ Status meanings:
   Last Checked: 2026-06-05
   Notes: The workspace-local `.agent-hub/tmp/codex-home/auth.json` was stale and no longer matched `~/.codex/auth.json`; the stale file was moved to `.agent-hub/backups/2026-06-05-subagent-auth-refresh/auth.json.before-sync`, then current auth was copied in. `.agent-hub/bin/agent_exec.py` now refreshes `auth.json` from `~/.codex` on each run and explicitly launches child Codex with `--model gpt-5.5` so the old unsupported `gpt-5.3-codex` config cannot break subagents. Smoke test returned `subagent works.`
 
-- Status: implemented
+- Status: self-checked
   Owner: assistant
   Task: Publish the standalone Codos spheres lab to GitHub Pages without additional confirmation and ask Sonya to send the Pages link when it is ready.
   Last Checked: 2026-06-05
-  Notes: GitHub Pages workflow and relative Vite asset base are configured. Awaiting production build, GitHub push, Pages deployment check, and Sonya link handoff.
+  Notes: Repository is public at `https://github.com/eppelas/codos-spheres-lab`. GitHub Pages is live at `https://eppelas.github.io/codos-spheres-lab/`; the review route is `https://eppelas.github.io/codos-spheres-lab/firefly/`. Commits pushed: `997e3a1` and `711d314`. GitHub Actions run `27018837949` completed successfully. Sonya Cloud Run `/agent-link` sent the Pages link to Anca / `@stavenski`, messageId `451`.
 
 ## Agent Self-Checks
 
@@ -46,11 +46,11 @@ Status meanings:
   Last Checked: 2026-06-05
   Notes: Final `npm run build` passed. Final `npm run verify:runtime -- --path=/firefly` passed for desktop and mobile: no horizontal overflow, one canvas, `flowDotCount: 48`, `programNodeCount: 12`, `calendarDayCount: 22`, and click-based track switching updates active days. Playwright screenshots were captured and manually reviewed at `/private/tmp/codos-firefly-path-compact-desktop.png`, `/private/tmp/codos-firefly-path-compact-mobile.png`, `/private/tmp/codos-firefly-codos-graph-desktop.png`, and `/private/tmp/codos-firefly-codos-graph-mobile.png`. WebGL pixel readback is intentionally unavailable in the runtime verifier because the canvas does not use `preserveDrawingBuffer`, which avoids a performance penalty.
 
-- Status: implemented
+- Status: self-checked
   Owner: assistant
   Task: Verify the GitHub Pages release path after configuring deploy.
   Last Checked: 2026-06-05
-  Notes: Pending local production build, GitHub Actions deploy, live Pages HTTP check, and Sonya handoff.
+  Notes: `VITE_PAGES_BASE=/codos-spheres-lab/ npm run build` passed. Live HTTP checks passed: Pages root returns `200`, `/firefly` redirects `301` to `/firefly/`, and `/firefly/` returns `200`. Escalated live runtime verification passed with `PLAYWRIGHT_BASE_URL=https://eppelas.github.io/codos-spheres-lab/ npm run verify:runtime -- --path=firefly/` for desktop/mobile with one canvas, `firefly-three`, no horizontal overflow, `flowDotCount: 48`, `programNodeCount: 12`, and `calendarDayCount: 22`.
 
 ## Approved / Closed
 
